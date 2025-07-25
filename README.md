@@ -1,4 +1,4 @@
-# nippo-internship2025-l2
+# nippo-internship2025
 2025年度インターンシップリポジトリ
 
 # サーバーの起動
