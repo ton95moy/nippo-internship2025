@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      TZ: Asia/Tokyo
+    ports:
+      - "5432:5432"
+    networks:
+      - database
+    volumes:
+      - type: volume
+        source: nippo-internship-db
+        target: /var/lib/postgresql/data
+
+  server:
+    build:
+      context: server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    tty: true
+    networks:
+      - database
+    volumes:
+      - type: bind
+        source: server
+        target: /server
+
+volumes:
+  nippo-internship-db:
+
+networks:
+  database:
+    driver: bridge
