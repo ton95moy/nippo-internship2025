@@ -33,7 +33,10 @@ export default async function Home() {
 
   return (
     <>
-      <h1 className="text-xl font-bold text-black-400">ToDoリスト</h1>
+      <h1 className="text-6xl font-bold">
+        <span className="text-red-500">TO</span>
+        <span className="text-blue-500">DO</span>リスト
+      </h1>
       <TodoForm children={data} />
     </>
   );
