@@ -33,9 +33,10 @@ export default async function Home() {
 
   return (
     <>
-      <h1 className="text-6xl font-bold">
-        <span className="text-red-500">TO</span>
-        <span className="text-blue-500">DO</span>リスト
+      <h1 className="text-4xl font-bold text-left">
+        <span style={{ color: "blue" }}>To</span>
+        <span style={{ color: "red" }}>Do</span>
+        <span style={{ color: "green" }}>リスト</span>
       </h1>
       <TodoForm children={data} />
     </>
