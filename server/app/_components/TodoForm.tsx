@@ -43,7 +43,12 @@ const TodoForm = ({ children }): JSX.Element => {
   return (
     <>
       { todoList && todoList.map((item) => (
-        <TodoItem key={item.id} todo={item} onEditBeginingHandler={onTodoEditBegining} />
+        <TodoItem 
+        key={item.id} 
+        todo={item} 
+        onEditBeginingHandler={onTodoEditBegining} 
+        isEditing={editingTodoIndex === todoList.findIndex((todo) => todo.id === item.id)}
+        />
       ))}
       <TodoEditor editTargetTodo={editTargetTodo} onSubmit={onTodoSubmitted}/>
     </>

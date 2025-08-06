@@ -1,10 +1,15 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { TodoData, TodoStatus } from "@/app/_types/TodoTypes";
-
+interface progs {
+  todo: TodoData;
+  onEditBeginingHandler?: (todo: TodoData) => void;
+  isEditing?: boolean;
+}
 type TodoItemProps = {
   id: number;
   todo: TodoData;
   onEditBeginingHandler?: (todo: TodoData) => void;
+  
 };
 
 const TodoItem = ({ todo, onEditBeginingHandler }: TodoItemProps): JSX.Element => {
@@ -35,7 +40,7 @@ const TodoItem = ({ todo, onEditBeginingHandler }: TodoItemProps): JSX.Element =
 
   return (
     <div className="flex w-full border border-gray-300 max-w-sm overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-      <div className={`flex items-center justify-center w-12 ${itemDesign.bgColor}`}>
+      <div className={`flex w-full max-w-sm overflow-hidden rounded-lg shadow-md ${itemDesign.bgColor}`}>
         {todo.status === TodoStatus.Done && (
           <FaCheckCircle className="w-6 h-6 text-white fill-current" />
         )}
