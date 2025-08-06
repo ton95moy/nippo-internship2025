@@ -17,7 +17,6 @@ const TodoForm = ({ children }): JSX.Element => {
 
   const [editingTodoIndex, setEditingTodoIndex] = React.useState<number>(undefined);
   const [editTargetTodo, setEditTargetTodo] = React.useState<TodoData>(newTodo);
-
   const onTodoSubmitted = (todo: TodoData) => {
     switch (editingTodoIndex) {
       case undefined:
