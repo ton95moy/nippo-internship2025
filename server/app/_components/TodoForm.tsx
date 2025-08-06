@@ -20,6 +20,7 @@ const TodoForm = ({ children }): JSX.Element => {
 
   const onTodoSubmitted = (todo: TodoData) => {
     const confirmed = window.confirm("タスクを保存しますか？");
+    if (!confirmed) return
     switch (editingTodoIndex) {
       case undefined:
         setTodoList([...todoList, todo]);
