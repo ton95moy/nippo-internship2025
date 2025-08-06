@@ -19,6 +19,7 @@ const TodoForm = ({ children }): JSX.Element => {
   const [editTargetTodo, setEditTargetTodo] = React.useState<TodoData>(newTodo);
 
   const onTodoSubmitted = (todo: TodoData) => {
+    const confirmed = window.confirm("タスクを保存しますか？");
     switch (editingTodoIndex) {
       case undefined:
         setTodoList([...todoList, todo]);
