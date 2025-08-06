@@ -10,14 +10,13 @@ const TodoForm = ({ children }): JSX.Element => {
   const [todoList, setTodoList] = React.useState<TodoData[]>(children);
   const newTodo: TodoData = {
     id: todoList.length === 0 ? 0 : todoList.map((todo) => todo.id).reduce((val1, val2) => (Math.max(val1, val2))) + 1,
-    status: TodoStatus.Done,
-    title: "Newタスク",
-    description: "タスクの説明文",
+    status: TodoStatus.Backlog,
+    title: "はじめていない",
+    description: "これはまだ着手していないタスクです。",
   };
 
   const [editingTodoIndex, setEditingTodoIndex] = React.useState<number>(undefined);
   const [editTargetTodo, setEditTargetTodo] = React.useState<TodoData>(newTodo);
-
   const onTodoSubmitted = (todo: TodoData) => {
     const confirmed = window.confirm("タスクを保存しますか？");
     if (!confirmed) return

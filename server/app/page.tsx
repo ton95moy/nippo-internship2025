@@ -16,7 +16,7 @@ async function LoadTodoItemsFromDB() {
   const ret = await client.query('select * from todo_items', []);
   await client.release(true);
   return ret.rows;
-
+  
 }
 
 export default async function Home() {
