@@ -8,11 +8,12 @@ interface progs {
 type TodoItemProps = {
   id: number;
   todo: TodoData;
+  index: number;
   onEditBeginingHandler?: (todo: TodoData) => void;
-  
+  isEditing?: boolean;  
 };
 
-const TodoItem = ({ todo, onEditBeginingHandler }: TodoItemProps): JSX.Element => {
+const TodoItem = ({ todo, index, onEditBeginingHandler }: TodoItemProps): JSX.Element => {
 
   let itemDesign = {
     caption: "",
@@ -40,10 +41,12 @@ const TodoItem = ({ todo, onEditBeginingHandler }: TodoItemProps): JSX.Element =
 
   return (
     <div className="flex w-full border border-gray-300 max-w-sm overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-      <div className={`flex w-full max-w-sm overflow-hidden rounded-lg shadow-md ${itemDesign.bgColor}`}>
+      <div className={`flex items-center justify-center w-12
+        ${itemDesign.bgColor}`}>
         {todo.status === TodoStatus.Done && (
           <FaCheckCircle className="w-6 h-6 text-white fill-current" />
         )}
+        {index + 1}
       </div>
 
       <div className="px-4 py-2 -mx-3">
