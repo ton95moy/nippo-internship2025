@@ -1,13 +1,19 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { TodoData, TodoStatus } from "@/app/_types/TodoTypes";
-
+interface progs {
+  todo: TodoData;
+  onEditBeginingHandler?: (todo: TodoData) => void;
+  isEditing?: boolean;
+}
 type TodoItemProps = {
   id: number;
   todo: TodoData;
+  index: number;
   onEditBeginingHandler?: (todo: TodoData) => void;
+  isEditing?: boolean;  
 };
 
-const TodoItem = ({ todo, onEditBeginingHandler }: TodoItemProps): JSX.Element => {
+const TodoItem = ({ todo, index, onEditBeginingHandler }: TodoItemProps): JSX.Element => {
 
   let itemDesign = {
     caption: "",
@@ -18,24 +24,25 @@ const TodoItem = ({ todo, onEditBeginingHandler }: TodoItemProps): JSX.Element =
   switch (todo.status) {
     case TodoStatus.Backlog:
       itemDesign.caption = "未着手";
-      itemDesign.textColor = "text-gray-500";
-      itemDesign.bgColor = "bg-gray-500";
+      itemDesign.textColor = "text-yellow-500";
+      itemDesign.bgColor = "bg-green-500";
       break;
     case TodoStatus.Inprogress:
       itemDesign.caption = "対応中";
       itemDesign.textColor = "text-blue-500";
-      itemDesign.bgColor = "bg-blue-500";
+      itemDesign.bgColor = "bg-red-500";
       break;
     case TodoStatus.Done:
       itemDesign.caption = "完了"
       itemDesign.textColor = "text-emerald-500";
-      itemDesign.bgColor = "bg-emerald-500";
+      itemDesign.bgColor = "bg-blue-500";
       break;
   }
 
   return (
-    <div className="flex w-full border border-gray-300 max-w-sm overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-      <div className={`flex items-center justify-center w-12 ${itemDesign.bgColor}`}>
+    <div className="flex w-400 border border-gray-300 max-w-sm overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+      <div className={`flex items-center justify-center w-12
+        ${itemDesign.bgColor}`}>
         {todo.status === TodoStatus.Done && (
           <FaCheckCircle className="w-6 h-6 text-white fill-current" />
         )}
@@ -43,8 +50,8 @@ const TodoItem = ({ todo, onEditBeginingHandler }: TodoItemProps): JSX.Element =
 
       <div className="px-4 py-2 -mx-3">
         <div className="mx-3">
-          <span className={`font-semibold ${itemDesign.textColor}`}>
-            {todo.title}
+          <span style={{ whiteSpace: 'pre-wrap' }} className={`font-semibold ${itemDesign.textColor}`}>
+            NO. {index + 1}   {todo.title}
           </span>
           <p className="me-1 mb-0 text-gray-700">{itemDesign.caption}</p>
           <p className="text-sm text-gray-600 dark:text-gray-200">

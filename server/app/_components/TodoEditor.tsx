@@ -6,10 +6,11 @@ import TodoItem from "@/app/_components/TodoItem";
 
 type TodoEditorProps = {
   editTargetTodo: TodoData;
+  index: number;
   onSubmit: (todo: TodoData) => void;
 };
 
-const TodoEditor = ({ editTargetTodo, onSubmit }): JSX.Element => {
+const TodoEditor = ({ editTargetTodo, index, onSubmit }): JSX.Element => {
   if (!editTargetTodo) {
     return <p>loading...</p>
   };
@@ -34,6 +35,7 @@ const TodoEditor = ({ editTargetTodo, onSubmit }): JSX.Element => {
 
   return (
     <div className="w-100 overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+      <p>No.{index}</p>
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="m-2">
           <label className="text-gray-400">タイトル</label>
